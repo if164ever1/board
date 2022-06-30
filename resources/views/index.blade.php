@@ -19,7 +19,7 @@
             <td><h3>{{ $bb->title }}</h3></td>
             <td>{{ $bb->price }}</td>
             <td>
-                <a href="/{{ $bb->id }}">Details</a>
+                <a href="{{route("detail", ["bb"=>$bb->id])}}">Details</a>
             </td>
         </tr>
         @endforeach
