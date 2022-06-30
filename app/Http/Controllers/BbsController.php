@@ -3,11 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bb;
 
 class BbsController extends Controller
 {
     public function index(){
-        return response ('There are list of things')
-        ->header('Content0type', 'text/plain');
+        $context = ['bbs'=>Bb::latest()->get()];
+        return view('index', $context);
+    }
+
+    public function detail(Bb $bb){
+        // $bb = Bb::find($bb);
+        $s = $bb->title . "\r\n\r\n";
+        $s .= $bb->content . "\r\n";
+        $s .= $bb->price . "USD \r\n";
+
+        return response($s)->header('Content-Type', 'text\plain');
     }
 }
