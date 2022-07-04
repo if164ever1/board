@@ -13,6 +13,17 @@
 </head>
 <body>
     <div class="container">
+        <nav class="navbar navbar-light bg-light">
+            <a href="{{ route('index') }}" class="navber-brand mr-auto">Main Page</a>
+            <a href="{{ route("register") }}" class="nav-item nav0link">Registration</a>
+            <a href="{{ route("login") }}" class="nav-item nav-link">Login</a>
+            <a href="{{ route("home") }}" class="nav-item nav-link">My advertisement</a>
+
+            <form action="{{ route("logout") }}" method="POST" class="form-inline">
+                @csrf
+                <input type="submit" class="btn btn-danger" value="Logout">
+            </form>
+        </nav>
         <h1 class="my-3 text-center">Advertisement</h1>
         @yield('main')
     </div>

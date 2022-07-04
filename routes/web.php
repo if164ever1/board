@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BbsController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +16,12 @@ use App\Http\Controllers\BbsController;
 */
 
 Route::get('/', [BbsController::class, 'index'])->name('index');
-Route::get('/{bb}', [BbsController::class, 'detail'])->name('detail');
+
 // Route::get('/{bb:title}', [BbsController::class, 'detail'])->name('detail');
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/{bb}', [BbsController::class, 'detail'])->name('detail');
+
